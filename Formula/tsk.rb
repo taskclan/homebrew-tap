@@ -11,8 +11,8 @@
 class Tsk < Formula
   desc "Deploy, scale, tail logs and roll back on Taskclan Cloud"
   homepage "https://cloud.taskclan.com"
-  url "https://github.com/taskclan/tsk/archive/refs/tags/v0.1.1.tar.gz"
-  sha256 "1c4fbc0077680f7be0eebe27a795de126cda235cb1dbf14757b6aa9c9c1f49f6"
+  url "https://github.com/taskclan/tsk/archive/refs/tags/v0.2.2.tar.gz"
+  sha256 "f014e6f3204dd8fb23d580d800610b9f61d7f0a007fb3dc36dd87c40302756cc"
   license "MIT"
 
   depends_on "node"
@@ -27,9 +27,7 @@ class Tsk < Formula
     assert_match version.to_s, shell_output("#{bin}/tsk version")
     assert_match "Taskclan Cloud", shell_output("#{bin}/tsk help")
 
-    # The flag spellings, added in 0.1.1. `tsk --help` — the form people type
-    # first — answered `no command "--help"` through the whole 0.1.0 release,
-    # and this block did not catch it because it only ever tried the bare words.
+    # Flag spellings people type first.
     assert_match "Taskclan Cloud", shell_output("#{bin}/tsk --help")
     assert_match "Taskclan Cloud", shell_output("#{bin}/tsk -h")
     assert_match version.to_s, shell_output("#{bin}/tsk --version")
